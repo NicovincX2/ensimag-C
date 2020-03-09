@@ -1,0 +1,1361 @@
+carte:
+  Options de compilation:
+    Options warnings: 0
+    Option de debug: 0
+    Option fichier objet: 0
+    Option fichier exécutable: 0
+    Edition de liens: 0
+    Lien avec librairies standard C: 0
+    Entiers: 0
+    Option variable macro et compilation conditionnelle: 0
+    Lien avec librairies statiques personnelles: 0
+    Lien avec librairies dynamiques personnelles: 0
+    Option fichier préprocesseur: 0
+    Option fichier assembleur: 0
+  Types de données:
+    Flottants: 0
+    Booléens: 0
+    Tableaux statiques: 0
+    Tableaux de dimension variable: 0
+    Caractères: 0
+    Chaînes de caractères: 0
+    Structures: 0
+    Enumérations: 0
+    Notion de constante: 0
+    Transtypage de types simples: 0
+    Opérateurs arithmétiques: 0
+    Typage des constantes: 0
+    Définition de type: 0
+    Transtypage de types avancés: 0
+    Unions: 0
+    Champs de bits: 0
+  Opérateurs:
+    Opérateurs d'assignation: 0
+    Opérateurs d'incrémentation: 0
+    Opérateurs de comparaison: 0
+    Opérateurs logiques: 0
+    Opérateurs binaires: 0
+    Opérateurs de décalages binaires: 0
+    Opérateurs structures et unions: 0
+    Opérateurs d'affectation composée: 0
+    Evaluation d'une instruction: 0
+    Opérateurs conditionnels: 0
+    Priorité des opérateurs: 0
+    Affectations structures et unions: 0
+  Structures de contrôle:
+    Condition simple if: 0
+    Conditions if else: 0
+    Conditions combinées avec opérateurs logiques: 0
+    Conditions de type switch: 0
+    Boucles for: 0
+    Boucles while: 0
+    Boucles do while: 0
+    Respect d'un coding style: 0
+    break, continue: 0
+  Programmation modulaire:
+    Découpage d'un module en fonctions: 0
+    Découpage d'un programme en modules: 0
+    Mise en oeuvre d'un fichier entête: 0
+    Macros de fichiers d'entête: 0
+    Prototypes de fonctions: 0
+    Prototypes de structures de données: 0
+    Portée d'une variable dans un module, une fonction: 0
+    Portée d'une fonction dans un module, un programme: 0
+    Makefile simple: 0
+    Ouverture de fichier: 0
+    Makefile avancé: 0
+    Fonction variadique: 0
+  Entrées/Sorties:
+    Fermeture de fichier: 0
+    Lecture caractère par caractère: 0
+    Ecriture caractère par caractère: 0
+    Ecriture dans un fichier texte: 0
+    Lecture par ligne: 0
+    Ecriture par ligne: 0
+    Affichage formaté sur la sortie standard: 0
+    Affichage formaté sur la sortie d’erreur: 0
+    Traitement caractère par caractère: 0
+    Ecriture dans un fichier binaire: 0
+    Entrées formatées depuis un fichier: 0
+    Entrées formatées depuis une chaine: 0
+    Déplacement au sein d'un fichier: 0
+    Entrées formatées depuis le clavier: 0
+  Chaines de caractères:
+    Codage ASCII: 0
+    Opérateur adresse de: 0
+    Fonctions de copies de chaines de caractères: 0
+    Fonctions de comparaisons de chaines de caractères: 0
+    Fonctions de longueur d'une chaine de caractères: 0
+    Fonctions de concaténation de 2 chaines de caractères: 0
+    Fonctions de conversion d'une chaine de caractères en entier: 0
+  Pointeurs et adresses:
+    Opérateur d'indirection: 0
+    Fonction taille mémoire d'un type de donnée: 0
+    Allocation de mémoire dynamique type de donnée simple: 0
+    Libération de mémoire: 0
+    Pointeurs de structures: 0
+    Listes chainées: 0
+    Passage de paramètre par copie: 0
+    Opérations arithmétiques sur les pointeurs: 0
+    Allocation de mémoire dynamique type de donnée complexe: 0
+    Copie de zones mémoire: 0
+    Tableaux de pointeurs: 0
+    Pointeurs de pointeurs: 0
+    Pointeurs sur void: 0
+    Pointeurs de fonctions: 0
+  Passage de paramètres:
+    Passage de la valeur d'une variable: 0
+    Passage de l'adresse d'une variable: 0
+    Passage d'un tableau statique en paramètre: 0
+    Passage de paramètres au programme principal: 0
+    Préprocesseur (include): 0
+    Passage en paramètre d'un tableau de pointeurs: 0
+    Passage en paramètre de pointeurs de pointeurs: 0
+  Macros:
+    Préprocesseur (define): 0
+    Fonction macro avec paramètres: 0
+    Fonction macro avec nombre variable de paramètres: 0
+    Macros spéciales nom de fichier, n° de ligne, nom de fonction: 0
+  Débogage:
+    Utilisation de valgrind: 0
+    Utilisation de gdb/ddd: 0
+    Utilisation des options de compilation: 0
+    Gestion d'erreurs à base de perror: 0
+    Affichage de traces: 0
+    Débogage de macros: 0
+base:
+  exos:
+    statphabet:
+      etat: "todo"
+      lvl: 3
+      maitrise: 0
+      love: 0
+      skills:
+        - Champs de bits
+        - Caractères
+        - Opérateurs d'incrémentation
+        - Codage ASCII
+        - Ouverture de fichier
+        - Fermeture de fichier
+        - Lecture caractère par caractère
+    errno:
+      etat: "todo"
+      lvl: 1
+      maitrise: 0
+      love: 0
+      skills:
+        - Gestion d'erreurs à base de perror
+    noel:
+      etat: "todo"
+      lvl: 1
+      maitrise: 0
+      love: 0
+      skills:
+        - Booléens
+        - Opérateurs logiques
+        - Conditions combinées avec opérateurs logiques
+    miaou:
+      etat: "todo"
+      lvl: 2
+      maitrise: 0
+      love: 0
+      skills:
+        - Ouverture de fichier
+        - Fermeture de fichier
+        - Lecture caractère par caractère
+        - Affichage formaté sur la sortie standard
+        - Boucles while
+        - Découpage d'un module en fonctions
+        - Prototypes de fonctions
+        - Passage de paramètres au programme principal
+    encoder:
+      etat: "todo"
+      lvl: 4
+      maitrise: 0
+      love: 0
+      skills:
+        - Codage ASCII
+        - Ouverture de fichier
+        - Fermeture de fichier
+        - Lecture caractère par caractère
+        - Ecriture caractère par caractère
+        - Ecriture dans un fichier texte
+    debogage-exo3:
+      etat: "todo"
+      lvl: 2
+      maitrise: 0
+      love: 0
+      skills:
+        - Entiers
+        - Boucles for
+        - Utilisation de gdb/ddd
+        - Utilisation des options de compilation
+    portee:
+      etat: "todo"
+      lvl: 1
+      maitrise: 0
+      love: 0
+      skills:
+        - Options warnings
+        - Portée d'une fonction dans un module, un programme
+    papous:
+      etat: "todo"
+      lvl: 1
+      maitrise: 0
+      love: 0
+      skills:
+        - Opérateurs logiques
+        - Conditions if else
+        - Conditions combinées avec opérateurs logiques
+    debogage-exo5:
+      etat: "todo"
+      lvl: 4
+      maitrise: 0
+      love: 0
+      skills:
+        - Tableaux statiques
+        - Portée d'une variable dans un module, une fonction
+        - Opérateur d'indirection
+        - Utilisation de valgrind
+        - Utilisation de gdb/ddd
+    pendu:
+      etat: "todo"
+      lvl: 3
+      maitrise: 0
+      love: 0
+      skills:
+        - Caractères
+        - Chaînes de caractères
+        - Traitement caractère par caractère
+        - Boucles do while
+    mystere:
+      etat: "todo"
+      lvl: 1
+      maitrise: 0
+      love: 0
+      skills:
+        - Respect d'un coding style
+    triche:
+      etat: "todo"
+      lvl: 3
+      maitrise: 0
+      love: 0
+      skills:
+        - Opérateur d'indirection
+        - Allocation de mémoire dynamique type de donnée simple
+        - Libération de mémoire
+    affiche-jour:
+      etat: "todo"
+      lvl: 1
+      maitrise: 0
+      love: 0
+      skills:
+        - Enumérations
+        - Conditions de type switch
+    somme-impairs:
+      etat: "todo"
+      lvl: 1
+      maitrise: 0
+      love: 0
+      skills:
+        - Tableaux statiques
+        - Notion de constante
+        - Boucles for
+        - Boucles while
+        - Découpage d'un module en fonctions
+        - Prototypes de fonctions
+    pingpong:
+      etat: "todo"
+      lvl: 1
+      maitrise: 0
+      love: 0
+      skills:
+        - Affichage formaté sur la sortie standard
+        - Affichage formaté sur la sortie d’erreur
+    preproc:
+      etat: "todo"
+      lvl: 2
+      maitrise: 0
+      love: 0
+      skills:
+        - Préprocesseur (define)
+    listes:
+      etat: "todo"
+      lvl: 3
+      maitrise: 0
+      love: 0
+      skills:
+        - Structures
+        - Passage de paramètre par copie
+        - Passage de la valeur d'une variable
+        - Passage de l'adresse d'une variable
+        - Opérateur adresse de
+        - Opérateur d'indirection
+        - Fonction taille mémoire d'un type de donnée
+        - Allocation de mémoire dynamique type de donnée simple
+        - Libération de mémoire
+        - Pointeurs de structures
+        - Listes chainées
+    lexico:
+      etat: "todo"
+      lvl: 2
+      maitrise: 0
+      love: 0
+      skills:
+        - Opérateurs de comparaison
+        - Traitement caractère par caractère
+        - Codage ASCII
+    implicit-declaration:
+      etat: "todo"
+      lvl: 1
+      maitrise: 0
+      love: 0
+      skills:
+        - Options warnings
+        - Préprocesseur (include)
+    safari:
+      etat: "todo"
+      lvl: 1
+      maitrise: 0
+      love: 0
+      skills:
+        - Affichage formaté sur la sortie standard
+        - Affichage formaté sur la sortie d’erreur
+    module-tableaux:
+      etat: "todo"
+      lvl: 2
+      maitrise: 0
+      love: 0
+      skills:
+        - Tableaux de dimension variable
+        - Opérateurs de comparaison
+        - Lecture par ligne
+        - Affichage formaté sur la sortie standard
+        - Découpage d'un module en fonctions
+        - Découpage d'un programme en modules
+        - Mise en oeuvre d'un fichier entête
+        - Macros de fichiers d'entête
+        - Prototypes de fonctions
+        - Passage de paramètre par copie
+        - Passage de la valeur d'une variable
+        - Passage d'un tableau statique en paramètre
+        - Préprocesseur (include)
+    do-while:
+      etat: "todo"
+      lvl: 2
+      maitrise: 0
+      love: 0
+      skills:
+        - Caractères
+        - Traitement caractère par caractère
+        - Boucles do while
+    debogage-exo9:
+      etat: "todo"
+      lvl: 1
+      maitrise: 0
+      love: 0
+      skills:
+        - Opérateurs d'assignation
+        - Evaluation d'une instruction
+        - Condition simple if
+        - Utilisation des options de compilation
+    debogage-exo7:
+      etat: "todo"
+      lvl: 1
+      maitrise: 0
+      love: 0
+      skills:
+        - Boucles for
+        - Utilisation de gdb/ddd
+        - Utilisation des options de compilation
+    suite:
+      etat: "todo"
+      lvl: 3
+      maitrise: 0
+      love: 0
+      skills:
+        - Structures
+        - Opérateurs de décalages binaires
+        - Opérateurs structures et unions
+        - Fonction taille mémoire d'un type de donnée
+        - Allocation de mémoire dynamique type de donnée simple
+        - Libération de mémoire
+        - Pointeurs de structures
+        - Utilisation de valgrind
+        - Gestion d'erreurs à base de perror
+    palindrome:
+      etat: "todo"
+      lvl: 2
+      maitrise: 0
+      love: 0
+      skills:
+        - Booléens
+        - Caractères
+        - Chaînes de caractères
+        - Traitement caractère par caractère
+        - Condition simple if
+        - Boucles for
+        - Boucles while
+    debogage-exo1:
+      etat: "todo"
+      lvl: 1
+      maitrise: 0
+      love: 0
+      skills:
+        - Options warnings
+        - Option de debug
+        - Opérateur adresse de
+        - Utilisation de valgrind
+        - Utilisation de gdb/ddd
+        - Utilisation des options de compilation
+    partition:
+      etat: "todo"
+      lvl: 1
+      maitrise: 0
+      love: 0
+      skills:
+        - Tableaux statiques
+        - Opérateurs binaires
+        - Opérateurs de décalages binaires
+        - Boucles for
+    big-brother:
+      etat: "todo"
+      lvl: 1
+      maitrise: 0
+      love: 0
+      skills:
+        - Ecriture par ligne
+    undefined-reference:
+      etat: "todo"
+      lvl: 1
+      maitrise: 0
+      love: 0
+      skills:
+        - Edition de liens
+        - Lien avec librairies standard C
+        - Makefile simple
+    matieres:
+      etat: "todo"
+      lvl: 5
+      maitrise: 0
+      love: 0
+      skills:
+        - Booléens
+        - Enumérations
+        - Définition de type
+        - Opérateurs binaires
+        - Opérateurs de décalages binaires
+    capitaine:
+      etat: "todo"
+      lvl: 1
+      maitrise: 0
+      love: 0
+      skills:
+        - Opérateurs d'incrémentation
+        - Opérateurs d'affectation composée
+    somme-pairs:
+      etat: "todo"
+      lvl: 1
+      maitrise: 0
+      love: 0
+      skills:
+        - Tableaux statiques
+        - Boucles for
+        - Boucles while
+    edition-liens:
+      etat: "todo"
+      lvl: 1
+      maitrise: 0
+      love: 0
+      skills:
+        - Option fichier objet
+        - Option fichier exécutable
+        - Edition de liens
+        - Découpage d'un programme en modules
+    rationnels:
+      etat: "todo"
+      lvl: 2
+      maitrise: 0
+      love: 0
+      skills:
+        - Entiers
+        - Flottants
+        - Structures
+        - Transtypage de types simples
+        - Opérateurs arithmétiques
+    euro2016:
+      etat: "todo"
+      lvl: 3
+      maitrise: 0
+      love: 0
+      skills:
+        - Structures
+        - Opérateurs structures et unions
+        - Conditions if else
+        - Prototypes de structures de données
+        - Opérateur adresse de
+        - Pointeurs de structures
+    diviseurs:
+      etat: "todo"
+      lvl: 1
+      maitrise: 0
+      love: 0
+      skills:
+        - Entiers
+        - Opérateurs arithmétiques
+        - Affichage formaté sur la sortie standard
+        - Boucles for
+  quiz:
+    score: 0
+    tot_score: 0
+    questions:
+      Segmentation fault:
+        category: Debug
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+          4: "wrong"
+          5: "wrong"
+      Agecanonix:
+        category: Debug
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Ah ben m... alors !:
+        category: Debug
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      pas très for:
+        category: Debug
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      bon, c'est "pour le moral":
+        category: Chaines de caracteres
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      What the hell:
+        category: Chaines de caracteres
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Charabia:
+        category: Chaines de caracteres
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+          4: "wrong"
+          5: "wrong"
+          6: "wrong"
+          7: "wrong"
+          8: "wrong"
+      Tank à ski:
+        category: Chaines de caracteres
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+          4: "wrong"
+      Aglagla:
+        category: Entrees-Sorties
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Le mot le plus long:
+        category: Entrees-Sorties
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Par ici la sortie:
+        category: Entrees-Sorties
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      FILE et faille:
+        category: Entrees-Sorties
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+          4: "wrong"
+          5: "wrong"
+      Rien à déclarer:
+        category: Compilation
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Ma référence à moi:
+        category: Compilation
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Compilaptor épisode 1:
+        category: Compilation
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+          4: "wrong"
+      Compilaptor contre attaque:
+        category: Compilation
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Comme C étrange:
+        category: Operateurs
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      C plus plus:
+        category: Operateurs
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      C, légal de l'homme:
+        category: Operateurs
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Un struct qui me trotte dans la tête:
+        category: Operateurs
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+          4: "wrong"
+          5: "wrong"
+          6: "wrong"
+          7: "wrong"
+      Argument vade retro satanas:
+        category: Passage de parametres
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+          4: "wrong"
+          5: "wrong"
+      Char suffit:
+        category: Passage de parametres
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Echange version Française des jeux:
+        category: Passage de parametres
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      La réponse est 42:
+        category: Pointeurs
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+          4: "wrong"
+      P'tit gros:
+        category: Pointeurs
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Ursule et les méduses:
+        category: Pointeurs
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Tu pointes ou tu tires?:
+        category: Pointeurs
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Chat malloc:
+        category: Allocation dynamique
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Malloc erveau:
+        category: Allocation dynamique
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Mémoire martyrisée ! Mais mémoire libérée !:
+        category: Allocation dynamique
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      La frite de Chartres:
+        category: Allocation dynamique
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      oh oh oh:
+        category: Programmation modulaire
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Le static c'est fantastic !:
+        category: Programmation modulaire
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Les fonctions partagées sont les meilleures:
+        category: Programmation modulaire
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      J'ai tout en tête:
+        category: Programmation modulaire
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Cold case:
+        category: Structure de controle
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Alphabête:
+        category: Structure de controle
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Pile ou face:
+        category: Structure de controle
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+      Traces de pneu:
+        category: Structure de controle
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Le compte est pas bon:
+        category: Type de donnees
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Poupées russes:
+        category: Type de donnees
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+      Les bornes ont des limites:
+        category: Type de donnees
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+avance:
+  exos:
+    makemorse:
+      etat: "todo"
+      lvl: 3
+      maitrise: 0
+      love: 0
+      skills:
+        - Lien avec librairies statiques personnelles
+        - Lien avec librairies dynamiques personnelles
+        - Makefile avancé
+    concatenation:
+      etat: "todo"
+      lvl: 3
+      maitrise: 0
+      love: 0
+      skills:
+        - Fonctions de longueur d'une chaine de caractères
+        - Fonctions de concaténation de 2 chaines de caractères
+        - Passage de paramètres au programme principal
+    contact:
+      etat: "todo"
+      lvl: 4
+      maitrise: 0
+      love: 0
+      skills:
+        - Fonctions de copies de chaines de caractères
+        - Fonctions de longueur d'une chaine de caractères
+        - Passage en paramètre de pointeurs de pointeurs
+        - Allocation de mémoire dynamique type de donnée complexe
+        - Libération de mémoire
+        - Pointeurs de pointeurs
+        - Gestion d'erreurs à base de perror
+    slab:
+      etat: "todo"
+      lvl: 5
+      maitrise: 0
+      love: 0
+      skills:
+        - Structures
+        - Passage de l'adresse d'une variable
+        - Passage de paramètres au programme principal
+        - Passage en paramètre de pointeurs de pointeurs
+        - Opérateur adresse de
+        - Opérateur d'indirection
+        - Allocation de mémoire dynamique type de donnée complexe
+        - Libération de mémoire
+        - Tableaux de pointeurs
+        - Pointeurs de pointeurs
+        - Listes chainées
+        - Pointeurs sur void
+    typedef:
+      etat: "todo"
+      lvl: 1
+      maitrise: 0
+      love: 0
+      skills:
+        - Définition de type
+    speed:
+      etat: "todo"
+      lvl: 2
+      maitrise: 0
+      love: 0
+      skills:
+        - Conditions combinées avec opérateurs logiques
+        - Copie de zones mémoire
+    debogage-exo4:
+      etat: "todo"
+      lvl: 5
+      maitrise: 0
+      love: 0
+      skills:
+        - Passage en paramètre d'un tableau de pointeurs
+        - Passage en paramètre de pointeurs de pointeurs
+        - Utilisation de valgrind
+        - Utilisation de gdb/ddd
+        - Utilisation des options de compilation
+    debogage-exo2:
+      etat: "todo"
+      lvl: 2
+      maitrise: 0
+      love: 0
+      skills:
+        - Option fichier préprocesseur
+        - Priorité des opérateurs
+        - Utilisation de gdb/ddd
+        - Utilisation des options de compilation
+        - Débogage de macros
+    jedi:
+      etat: "todo"
+      lvl: 4
+      maitrise: 0
+      love: 0
+      skills:
+        - Fonctions de conversion d'une chaine de caractères en entier
+        - Ouverture de fichier
+        - Fermeture de fichier
+        - Ecriture dans un fichier binaire
+        - Lecture par ligne
+        - Entrées formatées depuis un fichier
+        - Entrées formatées depuis une chaine
+        - Passage de paramètres au programme principal
+        - Déplacement au sein d'un fichier
+    divflot:
+      etat: "todo"
+      lvl: 1
+      maitrise: 0
+      love: 0
+      skills:
+        - Option variable macro et compilation conditionnelle
+        - Préprocesseur (define)
+    daddy-cool:
+      etat: "todo"
+      lvl: 2
+      maitrise: 0
+      love: 0
+      skills:
+        - Ouverture de fichier
+        - Fermeture de fichier
+        - Lecture caractère par caractère
+        - Déplacement au sein d'un fichier
+    debogage-trace:
+      etat: "todo"
+      lvl: 3
+      maitrise: 0
+      love: 0
+      skills:
+        - Utilisation de valgrind
+        - Utilisation de gdb/ddd
+        - Utilisation des options de compilation
+        - Affichage de traces
+    bigbucks:
+      etat: "todo"
+      lvl: 5
+      maitrise: 0
+      love: 0
+      skills:
+        - Structures
+        - Transtypage de types avancés
+        - Passage de l'adresse d'une variable
+        - Opérateur adresse de
+        - Opérateur d'indirection
+        - Opérations arithmétiques sur les pointeurs
+        - Fonction taille mémoire d'un type de donnée
+        - Allocation de mémoire dynamique type de donnée simple
+        - Libération de mémoire
+        - Pointeurs de structures
+        - Pointeurs de pointeurs
+    sdl:
+      etat: "todo"
+      lvl: 2
+      maitrise: 0
+      love: 0
+      skills:
+        - Option fichier objet
+        - Option fichier exécutable
+        - Edition de liens
+        - Lien avec librairies statiques personnelles
+        - Lien avec librairies dynamiques personnelles
+    stdtruc:
+      etat: "todo"
+      lvl: 2
+      maitrise: 0
+      love: 0
+      skills:
+        - Lecture par ligne
+        - Ecriture par ligne
+        - Affichage formaté sur la sortie standard
+        - Affichage formaté sur la sortie d’erreur
+    void:
+      etat: "todo"
+      lvl: 5
+      maitrise: 0
+      love: 0
+      skills:
+        - Transtypage de types avancés
+        - Opérateurs binaires
+        - Opérateurs conditionnels
+        - Opérations arithmétiques sur les pointeurs
+        - Pointeurs sur void
+    ifdef:
+      etat: "todo"
+      lvl: 3
+      maitrise: 0
+      love: 0
+      skills:
+        - Option variable macro et compilation conditionnelle
+    profiler:
+      etat: "todo"
+      lvl: 2
+      maitrise: 0
+      love: 0
+      skills:
+        - Typage des constantes
+        - Opérateurs binaires
+    morse:
+      etat: "todo"
+      lvl: 3
+      maitrise: 0
+      love: 0
+      skills:
+        - Chaînes de caractères
+        - Notion de constante
+        - Fonctions de copies de chaines de caractères
+        - Fonctions de comparaisons de chaines de caractères
+        - Fonctions de longueur d'une chaine de caractères
+        - Boucles for
+        - Mise en oeuvre d'un fichier entête
+        - Macros de fichiers d'entête
+        - Prototypes de fonctions
+        - Portée d'une variable dans un module, une fonction
+        - Makefile simple
+    debogage-exo6:
+      etat: "todo"
+      lvl: 3
+      maitrise: 0
+      love: 0
+      skills:
+        - Option de debug
+        - Pointeurs de fonctions
+        - Utilisation de gdb/ddd
+        - Utilisation des options de compilation
+    debogage-exo8:
+      etat: "todo"
+      lvl: 5
+      maitrise: 0
+      love: 0
+      skills:
+        - Opérations arithmétiques sur les pointeurs
+        - Utilisation de valgrind
+        - Utilisation de gdb/ddd
+        - Utilisation des options de compilation
+    perf:
+      etat: "todo"
+      lvl: 3
+      maitrise: 0
+      love: 0
+      skills:
+        - Opérateurs binaires
+        - Pointeurs de fonctions
+    bingo:
+      etat: "todo"
+      lvl: 1
+      maitrise: 0
+      love: 0
+      skills:
+        - Affichage formaté sur la sortie standard
+        - Condition simple if
+        - Boucles for
+        - break, continue
+        - Allocation de mémoire dynamique type de donnée simple
+        - Gestion d'erreurs à base de perror
+    quicksort:
+      etat: "todo"
+      lvl: 5
+      maitrise: 0
+      love: 0
+      skills:
+        - Transtypage de types avancés
+        - Pointeurs sur void
+        - Pointeurs de fonctions
+  quiz:
+    score: 0
+    tot_score: 0
+    questions:
+      Bluff:
+        category: Chaines de caracteres
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      0 + 0:
+        category: Chaines de caracteres
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Pas d'insulte, svp:
+        category: Chaines de caracteres
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Xfiles épisode 1:
+        category: Entrees-Sorties
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Xfiles épisode 2:
+        category: Entrees-Sorties
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Xfiles épisode 3:
+        category: Entrees-Sorties
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      RGB:
+        category: Entrees-Sorties
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+          4: "wrong"
+          5: "wrong"
+      Tirégranti:
+        category: Compilation
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      P'tite aile:
+        category: Compilation
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      L est facile celle-là:
+        category: Compilation
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Corbillard:
+        category: Compilation
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+      Intraitable avec les pointeurs:
+        category: Passage de parametres
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Qui veut mon poisson ?:
+        category: Passage de parametres
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Enter the matrix:
+        category: Passage de parametres
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Je connais le kung fu:
+        category: Passage de parametres
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Arg, ma cam:
+        category: Passage de parametres
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+          4: "wrong"
+          5: "wrong"
+      Des étoiles plein les mirettes:
+        category: Pointeurs Complexes
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      L'inter des pères:
+        category: Pointeurs Complexes
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+          4: "wrong"
+          5: "wrong"
+      What's up doc?:
+        category: Pointeurs Complexes
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Hop hop hop!:
+        category: Pointeurs Complexes
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Foo Ahh:
+        category: Operations et fonctions sur pointeurs
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+          4: "wrong"
+          5: "wrong"
+      Dégueu:
+        category: Operations et fonctions sur pointeurs
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+          4: "wrong"
+      Cochon à la montagne:
+        category: Operations et fonctions sur pointeurs
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Gargamel:
+        category: Operations et fonctions sur pointeurs
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+          4: "wrong"
+      Cacast:
+        category: Type de donnees
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Chaussette et saucisse:
+        category: Type de donnees
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Chaussisse et saucette:
+        category: Type de donnees
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
+      Sauchisse et Sauchette:
+        category: Type de donnees
+        score: 0
+        answers:
+          0: "wrong"
+          1: "wrong"
+          2: "wrong"
+          3: "wrong"
