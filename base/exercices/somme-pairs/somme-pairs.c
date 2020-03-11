@@ -12,8 +12,18 @@
 
 #include <stdlib.h>
 #include <stdint.h>
+#include <stdio.h>
 
 int main(void)
 {
+    uint8_t tab[] = { 0, 2, 4, 6, 8, 10, 12, 14, 16, 18 };
+    
+    uint8_t somme = 0;
+    for (uint8_t i = 0; i < 10; i++) {
+        somme += tab[i];
+    }
+
+    printf("Valeur attendue: %u.\n", somme);
+    
     return EXIT_SUCCESS;
 }

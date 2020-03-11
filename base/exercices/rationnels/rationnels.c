@@ -18,7 +18,7 @@ struct rationnel
 /* Retourne la valeur réelle associée au rationnel r. */
 static float valeur_rationnel(struct rationnel r)
 {
-    float ret;
+    float ret = (float)r.n / r.d;
     return ret;
 }
 
@@ -30,6 +30,11 @@ static float somme_puis_convertit(struct rationnel r1,
                                   struct rationnel r2)
 {
     float ret = 0.0;
+    struct rationnel r = {
+        r2.d * r1.n + r1.d * r2.n,
+        r1.d * r2.d
+    };
+    ret = valeur_rationnel(r);
     return ret;
 }
 
@@ -40,7 +45,7 @@ static float somme_puis_convertit(struct rationnel r1,
 static float convertit_puis_somme(struct rationnel r1,
                                   struct rationnel r2)
 {
-    float ret = 0.0;
+    float ret = valeur_rationnel(r1) + valeur_rationnel(r2);
     return ret;
 }
 

@@ -4,6 +4,9 @@
 
 static void afficher_papous(bool est_papa, bool a_poux)
 {
+    printf("y'a des papous %s papa %s à poux\n",
+    est_papa ? "" : "pas",
+    a_poux ? "" : "pas");
 }
 
 int main(void)

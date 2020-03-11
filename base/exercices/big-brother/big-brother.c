@@ -4,7 +4,15 @@
 /* Ecrit le message "message" dans le flux stream. */
 static void log_message(FILE *stream, const char *message)
 {
-
+    /* On écrit toute la ligne d'un coup! */
+    int ret = fputs(message, stream);
+    if (ret == EOF) {
+        /* Si jamais ça se passe mal, on affiche un message d'erreur
+         * explicite via la fonction perror, et on arrête le
+         * programme. */
+        perror("log_message: ");
+        exit(EXIT_FAILURE);
+    }
 }
 
 int main(void)

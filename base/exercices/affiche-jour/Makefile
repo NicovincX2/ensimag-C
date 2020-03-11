@@ -13,5 +13,6 @@ clean:
 
 .PHONY: progress
 
+# python ../../../.progress/update $([io.path]::GetFileNameWithoutExtension($(pwd)))
 progress:
-	@../../../.progress/update $(shell basename "$(shell pwd)")
+	 @../../../.progress/update $(shell basename "$(shell pwd)")

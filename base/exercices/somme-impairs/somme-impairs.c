@@ -28,9 +28,34 @@
 
 #include <stdlib.h>
 #include <stdint.h>
+#include <stdio.h>
+
+void init_tab(uint32_t tab[], size_t length)
+{
+    for (uint32_t i = 0; i < length; i++) {
+        tab[i] = 2 * i + 1;
+    }
+}
+
+static uint32_t somme_tab(uint32_t tab[], size_t length)
+{
+    uint32_t somme = 0;
+    for (uint32_t i = 0; i < length; i++) {
+        somme += tab[i];
+    }
+    return somme;
+}
 
 int main(void)
 {
+    const uint16_t TAILLE_TAB = 5000;
+    uint32_t somme = 0;
+    uint32_t tab[TAILLE_TAB];
+    
+    init_tab(tab, TAILLE_TAB);
+    somme = somme_tab(tab, TAILLE_TAB);
+    
+    printf("Somme des 5000 premiers entiers impairs strictement positifs = %u.\n", somme);
 
     return EXIT_SUCCESS;
 }

@@ -39,7 +39,7 @@ def main():
     # sans casser le dépôt. Sinon, on affiche un message
     # explicite indiquant qu'il faut mettre à jour le dépôt
     # local pour récupérer les modifications distantes.
-    try_pull("make progress")
+    # try_pull("make progress")
 
     progress = None
     with open(os.path.join(current_folder, "progress.yaml"), "r") as progress_file:

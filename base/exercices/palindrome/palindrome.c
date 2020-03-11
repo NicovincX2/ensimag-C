@@ -6,6 +6,14 @@
 
 static bool est_palindrome(const char *mot)
 {
+    int i = 0, j = strlen(mot) - 1;
+    
+    // on compare tant que les caractères sont identiques
+    while (j > 1) {
+        if (mot[i++] != mot[j--]) {
+            return false;
+        }
+    }
     return true;
 }
 
@@ -21,6 +29,11 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
+    if (est_palindrome(argv[1])) {
+        printf("%s est bien un palindrome!\n", argv[1]);
+    } else {
+        printf("%s n'est pas un palindrome...\n", argv[1]);
+    }
 
     return EXIT_SUCCESS;
 }
