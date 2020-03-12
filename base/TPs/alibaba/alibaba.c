@@ -103,8 +103,7 @@ void ldc_supprime(ldc *l, uint32_t e) {
 void ldc_libere(ldc *l) {
     cellule *tete = l->tete;
     cellule_libere(tete);
-    l = NULL;
-    assert(l == NULL);
+    ldc_init(l);
 }
 
 void cellule_libere(cellule *c) {
@@ -159,6 +158,8 @@ int main(void) {
     }
     ldc_affiche(voleurs);
     ldc_affiche(perdants);
+    ldc_libere(&voleurs);
+    ldc_libere(&perdants);
 
 #endif
 
