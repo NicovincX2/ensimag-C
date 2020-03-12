@@ -33,7 +33,7 @@ static void afficher(struct cellule *l)
 */
 static void inserer_tete(struct cellule **pl, uint32_t v)
 {
-    /* 
+    /*
     Comme cette fonction modifie la liste (la première cellule),
     la fonction appelante doit passer l'adresse de la liste pour pouvoir
     observer les changements (cf fiche passage de paramètres du kit de
@@ -43,7 +43,7 @@ static void inserer_tete(struct cellule **pl, uint32_t v)
     // allocation d'une nouvelle cellule, tête de la nouvelle liste
     struct cellule *liste = (struct cellule *)malloc(sizeof(struct cellule));
     assert(liste != NULL);
-    liste->val = v; 
+    liste->val = v;
     liste->suiv = *pl;
     /* On fait pointer l'argument pl vers la nouvelle liste */
     *pl = liste;
@@ -55,24 +55,24 @@ static void inserer_tete(struct cellule **pl, uint32_t v)
 */
 static void inserer_queue(struct cellule **pl, uint32_t v)
 {
-    /* 
+    /*
         On place une sentinelle de manière à gérer à l'identique tous les cas
         incluant le cas liste vide. Le champ suiv de notre sentinelle sera la
         liste que l'on voudra retourner.
     */
     struct cellule sentinelle = { -1, *pl }; // sentinelle de tête
     struct cellule *queue = &sentinelle; // queue pointe vers l'adresse de sentinelle
-    
+
     while (queue->suiv != NULL) {
         queue = queue->suiv; // (*queue).suiv contient sentinelle.suivant ie. un pointeur vers la cellule suivant sentinelle
     }
-    
+
     queue->suiv = (struct cellule *)malloc(sizeof(struct cellule));
     assert(queue->suiv != NULL);
-    
+
     queue->suiv->val = v;
     queue->suiv->suiv = NULL;
-    
+
     /* On fait pointer l'argument pl vers la nouvelle liste */
     *pl = sentinelle.suiv;
 }
@@ -85,16 +85,16 @@ static void supprimer_premiere_occurrence(struct cellule **pl, int32_t v)
 {
     struct cellule sentinelle = { -1, *pl};
     struct cellule *avant_recherchee = &sentinelle;
-    
+
     while (avant_recherchee->suiv != NULL && avant_recherchee->suiv->val != v) {
         avant_recherchee = avant_recherchee->suiv;
     }
     // on a trouve la cellule recherchée dans la liste
     if (avant_recherchee->suiv != NULL) {
         // On rechaine les 2 cellules de la liste entourant l'occurrence et on libère la cellule trouvée.
-        struct cellule *style = avant_recherchee->suiv;
-        avant_recherchee->suiv = style->suiv;
-        free(style);
+        struct cellule *recherchee = avant_recherchee->suiv;
+        avant_recherchee->suiv = recherchee->suiv;
+        free(recherchee);
     }
     *pl = sentinelle.suiv;
 }

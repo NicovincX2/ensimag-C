@@ -39,7 +39,7 @@ void tri_insertion(int32_t tab[], uint32_t taille)
         // tableau trié de 0 à i - 1
         int32_t tmp = tab[i];
         int32_t j = i - 1;
-        
+
         while (j >= 0 && tab[j] > tmp) {
             tab[j + 1] = tab[j];
             j--;
