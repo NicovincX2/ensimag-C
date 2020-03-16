@@ -95,6 +95,7 @@ void ldc_libere(ldc **pl) {
         free(temp);
         --taille;
     }
+    free(*pl);
     *pl = NULL;
 }
 
