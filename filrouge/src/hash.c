@@ -12,6 +12,7 @@ unsigned long hash(const unsigned char *str)
     return hash;
 }
 
+#ifdef UNIT_TEST
 int main(void) {
     unsigned long h;
     const unsigned char *test = (const unsigned char *)"test";
@@ -21,3 +22,4 @@ int main(void) {
     
     return EXIT_SUCCESS;
 }
+#endif
