@@ -1,8 +1,8 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -g -O2 -I../include
 # truc cracra pour récupérer le chemin absolu vers le répertoire lib/
-LIBDIR = $(shell dirname $(shell find $(shell pwd) | head -n 1))/lib/
-LDFLAGS = -Wl,--gc-sections -Wl,--print-gc-sections  -Wl,-rpath=$(LIBDIR) -L$(LIBDIR) -ldirectory
+LIBDIR = $(shell dirname $(shell find $(shell pwd) | head -n 1))/lib
+LDFLAGS = -Wl,--gc-sections  -Wl,-rpath=$(LIBDIR) -L$(LIBDIR) -ldirectory
 
 TESTS = directory-01-test \
 	directory-02-test \

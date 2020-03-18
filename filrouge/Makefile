@@ -5,7 +5,7 @@ LDFLAGS = -Wl,--gc-sections -Wl,--print-gc-sections
 
 all: lib/libdirectory.so build-tests
 
-lib/libdirectory.so: obj/directory.o obj/contact.o obj/hash.o
+lib/libdirectory.so: obj/directory.o obj/contact.o obj/hash.o obj/utils.o
 	$(CC) -shared $^ -o $@
 
 obj/%.o: src/%.c
@@ -19,4 +19,3 @@ build-tests:
 clean:
 	rm -rf obj/*.o obj/*.su lib/libdirectory.so
 	make -C tests/ clean
-

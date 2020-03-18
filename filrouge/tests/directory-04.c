@@ -11,7 +11,7 @@
 
 int main(void)
 {
-    struct dir *dir = dir_create(10);
+    dir *dir = dir_create(10);
     dir_insert(dir, "Colonel Moutarde", "06789435351");
     dir_insert(dir, "Caporal Ketchup", "0678346533");
     dir_insert(dir, "Sergent Mayo", "06723236533");
@@ -27,7 +27,7 @@ int main(void)
     for (size_t id = 0; id < 4; id++) {
         const char *num = dir_lookup_num(dir, names[id]);
         if (num == NULL) {
-            printf("%s ne figure pas ddirs l'directory!\n", names[id]);
+            printf("%s ne figure pas dans le directory!\n", names[id]);
         } else {
             printf("Le numéro de %s est %s.\n", names[id], num);
         }

@@ -8,9 +8,8 @@
 
 #include <directory.h>
 
-int main(void)
-{
-    struct dir *dir = dir_create(5);
+int main(void) {
+    dir *dir = dir_create(5);
     dir_free(dir);
 
     return EXIT_SUCCESS;

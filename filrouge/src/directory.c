@@ -1,17 +1,101 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <assert.h>
 
 #include <directory.h>
 #include <contact.h>
 #include <hash.h>
+#include <utils.h>
+
+#define HT_CAPACITE_BASE_INITIALE 50
+
+
+void dir_insert(dir *ht, const char *cle, const char *valeur); // pour la fonction resize_dir
+
 
 /*
-  Crée un nouvel annuaire contenant _len_ listes vides.
+  Initialise une nouvelle table de hachage avec une valeur size qui correspond
+  au nombre d'éléments que nous pouvons stocker
+  calloc, qui remplit la mémoire allouée avec les octets NULL
+  On n'altère pas les chaînes originales
 */
-struct dir *dir_create(uint32_t len)
-{
-    (void)len;
-    return NULL;
+static dir *dir_create_dynamic(const size_t capacite_base) {
+    dir *ht = malloc(sizeof(dir));
+    assert(ht != NULL);
+    ht->capacite_base = capacite_base;
+
+    ht->capacite = next_prime(ht->capacite_base);
+
+    ht->taille = 0;
+    ht->contacts = calloc(ht->capacite, sizeof(dir_item *));
+
+    return ht;
+}
+
+dir *dir_create(const size_t capacite_base) {
+    return dir_create_dynamic(capacite_base);
+}
+
+/*
+  Libère la mémoire associée à l'annuaire _dir_.
+*/
+
+void dir_free(dir *ht) {
+    for (size_t i = 0; i < ht->capacite; i++) {
+        lcontact_free(ht->contacts[i]);
+    }
+    free(ht->contacts);
+    free(ht);
+}
+
+static void resize_dir(dir *ht, const size_t capacite_base) {
+    if (capacite_base < HT_CAPACITE_BASE_INITIALE) {
+        // on ne doit pas réduire la taille en dessous de son minimum
+        return;
+    }
+    dir *new_ht = dir_create_dynamic(capacite_base);
+    for (size_t i = 0; i < ht->taille; i++) {
+        dir_item *lc = ht->contacts[i];
+        if (lc != NULL) {
+            contact *courant = lc->tete;
+            while (courant != NULL) {
+                dir_insert(new_ht, courant->cle, courant->valeur);
+                courant = courant->suivant;
+            }
+        }
+    }
+
+    ht->capacite_base = new_ht->capacite_base;
+    ht->taille = new_ht->taille;
+
+    // delete new_ht
+    const size_t capacite_temp = ht->capacite;
+    ht->capacite = new_ht->capacite;
+    new_ht->capacite = capacite_temp;
+
+    dir_item **contacts_temp = ht->contacts;
+    ht->contacts = new_ht->contacts;
+    new_ht->contacts = contacts_temp;
+
+    dir_free(new_ht);
+}
+
+static void resize_up(dir *ht) {
+    const size_t new_capacite = ht->capacite_base * 2;
+    resize_dir(ht, new_capacite);
+}
+
+static void resize_down(dir *ht) {
+    const size_t new_capacite = ht->capacite_base / 2;
+    resize_dir(ht, new_capacite);
+}
+
+/*
+  On récupère le hash
+*/
+static unsigned long get_hash(const char *str) {
+    unsigned long ht_hash = hash((const unsigned char *)str);
+    return ht_hash;
 }
 
 /*
@@ -19,48 +103,182 @@ struct dir *dir_create(uint32_t len)
   numéro passés en paramètre. Si il existait déjà un contact du même nom, son
   numéro est remplacé et la fonction retourne une copie de l'ancien numéro.
   Sinon, la fonction retourne NULL.
+  Pour l'insertion on calcule l'index associé à la clef.
+  Traitement des collisions par méthode de chaînage.
 */
-char *dir_insert(struct dir *dir, const char *name, const char *num)
-{
-    (void)dir;
-    (void)name;
-    (void)num;
-    return NULL;
+void dir_insert(dir *ht, const char *cle, const char *valeur) {
+    const int load = (int)(ht->taille * 100 / ht->capacite);
+    if (load > 75) {
+        resize_up(ht);
+    }
+
+    int32_t indice = (int32_t)(get_hash(cle) % ht->capacite);
+    // Liste chaînee si présente à l'indice donné
+    dir_item *lcontact_courant = ht->contacts[indice];
+
+    // Création du contact à insérer dans la table de hashage
+    contact *c = contact_create(cle, valeur);
+
+    if (lcontact_courant == NULL) {
+        // pas de contact à l'indice donné
+        // fait dans liste_contacts_create(c)
+        // lc->tete = c;
+        // lc->queue = c;
+        dir_item *lc = liste_contacts_create(c);
+        ht->contacts[indice] = lc;
+        ++(ht->taille);
+    } else {
+        // une liste chaînee est presente
+        int indice_recherche = trouver_contact(lcontact_courant, cle);
+        if (indice_recherche == -1) {
+            // clef non trouvee, on l'ajoute à la fin
+            if ((ht->contacts[indice])->queue == NULL) {
+                (ht->contacts[indice])->tete = c;
+                (ht->contacts[indice])->queue = c;
+            } else {
+                (ht->contacts[indice])->queue->suivant = c;
+                (ht->contacts[indice])->queue->precedent = (ht->contacts[indice])->queue;
+                (ht->contacts[indice])->queue = c;
+            }
+            // ++(ht->taille); // commenté car taille n'est pas le nombre de cellules
+        } else {
+            // clef deja presente, on supprime le contact et on le recrè
+            // car pas de const dans struct et on a const char *valeur
+            contact *recherchee = get_contact(lcontact_courant, indice_recherche);
+            printf("Valeur remplacée : %s\n", recherchee->valeur);
+            // ce que l'on pourrait faire directement sans prbl des const
+            // recherchee->valeur = valeur;
+            // ce que l'on fait plutot : remplacer recherchee par c
+            if (recherchee->suivant) {
+                recherchee->precedent->suivant = c;
+                recherchee->suivant->precedent = c;
+            } else {
+                // le contact est en tête
+                (ht->contacts[indice])->tete = c;
+                (ht->contacts[indice])->queue = c;
+            }
+            // char *numero = strdup(recherchee->valeur); // penser à free(numero),
+            contact_free(recherchee);
+        }
+    }
 }
 
 /*
-  Retourne le numéro associé au nom _name_ dans l'annuaire _dir_. Si aucun contact
-  ne correspond, retourne NULL.
+  Retourne le numéro associé au nom _name_ dans l'annuaire _dir_. Si aucun contact ne correspond, retourne NULL.
+  All string literals are allocated at compile time. They already reside in a read-only section of the program memory when your program is started; they aren't allocated in runtime. You can regard them as constant character arrays. And like any const variable, they remain valid throughout the whole execution of the program.
 */
-const char *dir_lookup_num(struct dir *dir, const char *name)
-{
-    (void)dir;
-    (void)name;
+const char *dir_lookup_num(dir *ht, const char *cle) {
+
+    int32_t indice = (int32_t)(get_hash(cle) % ht->capacite);
+    dir_item *lcontact_courant = ht->contacts[indice];
+    if (lcontact_courant != NULL) {
+        int indice_recherche = trouver_contact(lcontact_courant, cle);
+        if (indice_recherche != -1) {
+            return (const char *)(get_contact(lcontact_courant, indice_recherche)->valeur);
+        }
+    }
     return NULL;
 }
 
 /*
   Supprime le contact de nom _name_ de l'annuaire _dir_. Si aucun contact ne
   correspond, ne fait rien.
+  Si l'élément fait partie d'une chaîne de collision (ie. liste chaînee) on
+  peut facilement le supprimer avec la méthode de la liste chainee
+  Sans liste chaînee, l'enlever de la table va rompre cette chaîne et rendra
+  impossible la recherche d'éléments. On le marquerai alors simplement comme
+  supprimé.
+  static contact HT_DELETED_CONTACT = {NULL, NULL, NULL, NULL};
 */
-void dir_delete(struct dir *dir, const char *name)
-{
-    (void)dir;
-    (void)name;
-}
-
-/*
-  Libère la mémoire associée à l'annuaire _dir_.
-*/
-void dir_free(struct dir *dir)
-{
-    (void)dir;
+void dir_delete(dir *ht, const char *cle) {
+    const int load = (int)(ht->taille * 100 / ht->capacite);
+    if (load < 25) {
+        resize_down(ht);
+    }
+    int32_t indice = (int32_t)(get_hash(cle) % ht->capacite);
+    dir_item *lcontact_courant = ht->contacts[indice];
+    if (lcontact_courant != NULL) {
+        int indice_recherche = trouver_contact(lcontact_courant, cle);
+        if (indice_recherche != -1) {
+            // clef deja presente, on supprime le contact
+            contact *recherchee = get_contact(lcontact_courant, indice_recherche);
+            if (recherchee->suivant) {
+                recherchee->precedent->suivant = recherchee->suivant;
+                recherchee->suivant->precedent = recherchee->precedent;
+            } else {
+                // le contact est en tête
+                (ht->contacts[indice])->tete = recherchee->suivant;
+                (ht->contacts[indice])->queue = recherchee->precedent;
+            }
+            contact_free(recherchee);
+            // on décrémente le nombre de listes chainees si la liste chainee est vide
+            if ((ht->contacts[indice])->tete == NULL) {
+                (ht->taille)--;
+            }
+        }
+    }
 }
 
 /*
   Affiche sur la sortie standard le contenu de l'annuaire _dir_.
 */
-void dir_print(struct dir *dir)
-{
-    (void)dir;
+void dir_print(dir *ht) {
+    static unsigned int numero_affichage = 0;
+    numero_affichage++;
+    printf("Affichage n°%u\n", numero_affichage);
+    printf("%d, %d, %d\n", (int)(ht->capacite_base), (int)(ht->capacite), (int)(ht->taille));
+    for (size_t i = 0; i < ht->capacite; i++) {
+        dir_item *lc = ht->contacts[i];
+        if (lc != NULL) {
+            contact *courant = lc->tete;
+            while (courant != NULL) {
+                printf("k : %s, v : %s, indice : %i\n", courant->cle, courant->valeur, (int)i);
+                courant = courant->suivant;
+            }
+        }
+    }
 }
+
+// int main(void) {
+//     dir *ht = dir_create(HT_CAPACITE_BASE_INITIALE);
+//     dir_print(ht);
+//
+//     dir_insert(ht, "bonjour", "Nicolas");
+//     dir_insert(ht, "hello", "Nicolas");
+//     dir_print(ht);
+//
+//     dir_delete(ht, "bonjour");
+//     const char *num = dir_lookup_num(ht, "hello");
+//     dir_print(ht);
+//     if (num != NULL) {
+//         printf("Lookup pour 'hello' : %s\n", num);
+//     }
+//
+//     dir_insert(ht, "bonjour", "Samy");
+//     dir_insert(ht, "bonjour", "Dominique");
+//     dir_print(ht);
+//
+//     dir_insert(ht, "bonjour", "Nicolas");
+//     dir_delete(ht, "hello");
+//     dir_print(ht);
+//     dir_free(ht);
+//
+//     dir *ht1 = dir_create(HT_CAPACITE_BASE_INITIALE);
+//     dir_print(ht1);
+//
+//     char buf[10];
+//     char *value;
+//     const int32_t nombre_insertions = 10000;
+//
+//     for (int32_t i = 0; i < nombre_insertions; i++) {
+//         sprintf(buf, "%i", i);
+//         value = strdup(buf);
+//         dir_insert(ht1, value, value);
+//         free(value);
+//     }
+//     // dir_print(ht1);
+//     printf("%d, %d, %d\n", (int)(ht1->capacite_base), (int)(ht1->capacite), (int)(ht1->taille));
+//     dir_free(ht1);
+//
+//     return EXIT_SUCCESS;
+// }
