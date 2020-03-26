@@ -29,7 +29,7 @@ extern dir *dir_create(const size_t capacite_base);
   numéro est remplacé et la fonction retourne une copie de l'ancien numéro.
   Sinon, la fonction retourne NULL.
 */
-extern void dir_insert(dir *ht, const char *cle, const char *valeur);
+extern char *dir_insert(dir *ht, const char *cle, const char *valeur);
 
 /*
   Retourne le numéro associé au nom _name_ dans l'annuaire _dir_. Si aucun

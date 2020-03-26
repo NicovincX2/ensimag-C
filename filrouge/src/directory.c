@@ -10,7 +10,7 @@
 #define HT_CAPACITE_BASE_INITIALE 50
 
 
-void dir_insert(dir *ht, const char *cle, const char *valeur); // pour la fonction resize_dir
+char *dir_insert(dir *ht, const char *cle, const char *valeur); // pour la fonction resize_dir
 
 
 /*
@@ -106,7 +106,7 @@ static unsigned long get_hash(const char *str) {
   Pour l'insertion on calcule l'index associé à la clef.
   Traitement des collisions par méthode de chaînage.
 */
-void dir_insert(dir *ht, const char *cle, const char *valeur) {
+char *dir_insert(dir *ht, const char *cle, const char *valeur) {
     const int load = (int)(ht->taille * 100 / ht->capacite);
     if (load > 75) {
         resize_up(ht);
@@ -127,6 +127,7 @@ void dir_insert(dir *ht, const char *cle, const char *valeur) {
         dir_item *lc = liste_contacts_create(c);
         ht->contacts[indice] = lc;
         ++(ht->taille);
+        return NULL;
     } else {
         // une liste chaînee est presente
         int indice_recherche = trouver_contact(lcontact_courant, cle);
@@ -141,6 +142,7 @@ void dir_insert(dir *ht, const char *cle, const char *valeur) {
                 (ht->contacts[indice])->queue = c;
             }
             // ++(ht->taille); // commenté car taille n'est pas le nombre de cellules
+            return NULL;
         } else {
             // clef deja presente, on supprime le contact et on le recrè
             // car pas de const dans struct et on a const char *valeur
@@ -157,8 +159,9 @@ void dir_insert(dir *ht, const char *cle, const char *valeur) {
                 (ht->contacts[indice])->tete = c;
                 (ht->contacts[indice])->queue = c;
             }
-            // char *numero = strdup(recherchee->valeur); // penser à free(numero),
+            char *numero = strdup(recherchee->valeur); // penser à free(numero),
             contact_free(recherchee);
+            return numero;
         }
     }
 }
@@ -239,46 +242,53 @@ void dir_print(dir *ht) {
     }
 }
 
-// int main(void) {
-//     dir *ht = dir_create(HT_CAPACITE_BASE_INITIALE);
-//     dir_print(ht);
-//
-//     dir_insert(ht, "bonjour", "Nicolas");
-//     dir_insert(ht, "hello", "Nicolas");
-//     dir_print(ht);
-//
-//     dir_delete(ht, "bonjour");
-//     const char *num = dir_lookup_num(ht, "hello");
-//     dir_print(ht);
-//     if (num != NULL) {
-//         printf("Lookup pour 'hello' : %s\n", num);
-//     }
-//
-//     dir_insert(ht, "bonjour", "Samy");
-//     dir_insert(ht, "bonjour", "Dominique");
-//     dir_print(ht);
-//
-//     dir_insert(ht, "bonjour", "Nicolas");
-//     dir_delete(ht, "hello");
-//     dir_print(ht);
-//     dir_free(ht);
-//
-//     dir *ht1 = dir_create(HT_CAPACITE_BASE_INITIALE);
-//     dir_print(ht1);
-//
-//     char buf[10];
-//     char *value;
-//     const int32_t nombre_insertions = 10000;
-//
-//     for (int32_t i = 0; i < nombre_insertions; i++) {
-//         sprintf(buf, "%i", i);
-//         value = strdup(buf);
-//         dir_insert(ht1, value, value);
-//         free(value);
-//     }
-//     // dir_print(ht1);
-//     printf("%d, %d, %d\n", (int)(ht1->capacite_base), (int)(ht1->capacite), (int)(ht1->taille));
-//     dir_free(ht1);
-//
-//     return EXIT_SUCCESS;
-// }
+int main(void) {
+    dir *ht = dir_create(HT_CAPACITE_BASE_INITIALE);
+    dir_print(ht);
+
+    dir_insert(ht, "bonjour", "Nicolas");
+    dir_insert(ht, "hello", "Nicolas");
+    dir_print(ht);
+
+    dir_delete(ht, "bonjour");
+    const char *num = dir_lookup_num(ht, "hello");
+    dir_print(ht);
+    if (num != NULL) {
+        printf("Lookup pour 'hello' : %s\n", num);
+    }
+
+    dir_insert(ht, "bonjour", "Samy");
+    char *valeur1 = dir_insert(ht, "bonjour", "Dominique");
+    printf("%s\n", valeur1);
+    free(valeur1);
+    dir_print(ht);
+
+    char *valeur2 = dir_insert(ht, "bonjour", "Nicolas");
+    printf("%s\n", valeur2);
+    free(valeur2);
+    dir_delete(ht, "hello");
+    dir_print(ht);
+    dir_free(ht);
+
+    dir *ht1 = dir_create(HT_CAPACITE_BASE_INITIALE);
+    dir_print(ht1);
+
+    char buf[10];
+    char *value;
+    const int32_t nombre_insertions = 10000;
+
+    for (int32_t i = 0; i < nombre_insertions; i++) {
+        sprintf(buf, "%i", i);
+        value = strdup(buf);
+        char *valeur3 = dir_insert(ht1, value, value);
+        if (valeur3 != NULL) {
+            free(valeur3);
+        }
+        free(value);
+    }
+    // dir_print(ht1);
+    printf("%d, %d, %d\n", (int)(ht1->capacite_base), (int)(ht1->capacite), (int)(ht1->taille));
+    dir_free(ht1);
+
+    return EXIT_SUCCESS;
+}
