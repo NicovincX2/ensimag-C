@@ -22,6 +22,10 @@ typedef struct dir_item {
 extern contact *contact_create(const char *cle, const char *valeur);
 extern dir_item *liste_contacts_create(contact *c);
 
+extern void contact_update(contact *c, const char *valeur);
+extern void contact_delete(dir_item *lc, contact *c);
+extern void lcontact_add(dir_item *lc, contact *c);
+
 extern void contact_free(contact *c);
 extern void lcontact_free(dir_item *lc);
 

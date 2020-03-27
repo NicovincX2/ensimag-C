@@ -116,11 +116,10 @@ char *dir_insert(dir *ht, const char *cle, const char *valeur) {
     // Liste chaînee si présente à l'indice donné
     dir_item *lcontact_courant = ht->contacts[indice];
 
-    // Création du contact à insérer dans la table de hashage
-    contact *c = contact_create(cle, valeur);
-
     if (lcontact_courant == NULL) {
         // pas de contact à l'indice donné
+        // Création du contact à insérer dans la table de hashage
+        contact *c = contact_create(cle, valeur);
         // fait dans liste_contacts_create(c)
         // lc->tete = c;
         // lc->queue = c;
@@ -132,35 +131,21 @@ char *dir_insert(dir *ht, const char *cle, const char *valeur) {
         // une liste chaînee est presente
         int indice_recherche = trouver_contact(lcontact_courant, cle);
         if (indice_recherche == -1) {
+            // Création du contact à insérer dans la table de hashage
+            contact *c = contact_create(cle, valeur);
             // clef non trouvee, on l'ajoute à la fin
-            if ((ht->contacts[indice])->queue == NULL) {
-                (ht->contacts[indice])->tete = c;
-                (ht->contacts[indice])->queue = c;
-            } else {
-                (ht->contacts[indice])->queue->suivant = c;
-                (ht->contacts[indice])->queue->precedent = (ht->contacts[indice])->queue;
-                (ht->contacts[indice])->queue = c;
-            }
+            lcontact_add(ht->contacts[indice], c);
             // ++(ht->taille); // commenté car taille n'est pas le nombre de cellules
             return NULL;
         } else {
-            // clef deja presente, on supprime le contact et on le recrè
-            // car pas de const dans struct et on a const char *valeur
+            // clef deja presente
             contact *recherchee = get_contact(lcontact_courant, indice_recherche);
             printf("Valeur remplacée : %s\n", recherchee->valeur);
             // ce que l'on pourrait faire directement sans prbl des const
             // recherchee->valeur = valeur;
-            // ce que l'on fait plutot : remplacer recherchee par c
-            if (recherchee->suivant) {
-                recherchee->precedent->suivant = c;
-                recherchee->suivant->precedent = c;
-            } else {
-                // le contact est en tête
-                (ht->contacts[indice])->tete = c;
-                (ht->contacts[indice])->queue = c;
-            }
-            char *numero = strdup(recherchee->valeur); // penser à free(numero),
-            contact_free(recherchee);
+            char *numero = recherchee->valeur; // strdup(recherchee->valeur);
+            contact_update(recherchee, valeur);
+
             return numero;
         }
     }
@@ -205,15 +190,7 @@ void dir_delete(dir *ht, const char *cle) {
         if (indice_recherche != -1) {
             // clef deja presente, on supprime le contact
             contact *recherchee = get_contact(lcontact_courant, indice_recherche);
-            if (recherchee->suivant) {
-                recherchee->precedent->suivant = recherchee->suivant;
-                recherchee->suivant->precedent = recherchee->precedent;
-            } else {
-                // le contact est en tête
-                (ht->contacts[indice])->tete = recherchee->suivant;
-                (ht->contacts[indice])->queue = recherchee->precedent;
-            }
-            contact_free(recherchee);
+            contact_delete(ht->contacts[indice], recherchee);
             // on décrémente le nombre de listes chainees si la liste chainee est vide
             if ((ht->contacts[indice])->tete == NULL) {
                 (ht->taille)--;
