@@ -19,8 +19,8 @@ contact *contact_create(const char *cle, const char *valeur) {
     contact *c = malloc(sizeof(contact));
     assert(c != NULL);
 
-    c->cle = (char *)cle; // strdup(cle);
-    c->valeur = (char *)valeur; // strdup(valeur);
+    c->cle = strdup(cle);
+    c->valeur = strdup(valeur);
     c->suivant = NULL; // TODO: revoir l'initialisation
     c->precedent = NULL;
 
@@ -41,8 +41,8 @@ dir_item *liste_contacts_create(contact *c) {
   Libération de la mémoire
 */
 void contact_free(contact *c) {
-    // free(c->cle);
-    // free(c->valeur);
+    free(c->cle);
+    free(c->valeur);
     free(c);
 }
 
@@ -60,7 +60,8 @@ void lcontact_free(dir_item *lc) {
 }
 
 void contact_update(contact *c, const char *valeur) {
-    c->valeur = (char *)valeur;
+    free(c->valeur);
+    c->valeur = strdup(valeur);
 }
 
 void contact_delete(dir_item *lc, contact *c) {

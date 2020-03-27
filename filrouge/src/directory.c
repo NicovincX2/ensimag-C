@@ -143,7 +143,7 @@ char *dir_insert(dir *ht, const char *cle, const char *valeur) {
             printf("Valeur remplacée : %s\n", recherchee->valeur);
             // ce que l'on pourrait faire directement sans prbl des const
             // recherchee->valeur = valeur;
-            char *numero = recherchee->valeur; // strdup(recherchee->valeur);
+            char *numero = strdup(recherchee->valeur);
             contact_update(recherchee, valeur);
 
             return numero;
