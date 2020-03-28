@@ -6,7 +6,7 @@
 
 #include "utils.h"
 
-// inutile
+
 char *strdup (const char *str) {
     size_t len = strlen(str) + 1;
     void *new = malloc(len);

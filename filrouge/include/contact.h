@@ -26,8 +26,8 @@ extern void contact_update(contact *c, const char *valeur);
 extern void contact_delete(dir_item *lc, contact *c);
 extern void lcontact_add(dir_item *lc, contact *c);
 
-extern void contact_free(contact *c);
-extern void lcontact_free(dir_item *lc);
+extern void contact_free(contact **c);
+extern void lcontact_free(dir_item **lc);
 
 extern int trouver_contact(dir_item *lc, const char *cle);
 extern contact *get_contact(dir_item *lc, int indice_recherche);

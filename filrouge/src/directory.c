@@ -20,7 +20,7 @@ char *dir_insert(dir *ht, const char *cle, const char *valeur); // pour la fonct
   On n'altère pas les chaînes originales
 */
 static dir *dir_create_dynamic(const size_t capacite_base) {
-    dir *ht = malloc(sizeof(dir));
+    dir *ht = malloc(sizeof *ht);
     assert(ht != NULL);
     ht->capacite_base = capacite_base;
 
@@ -42,7 +42,7 @@ dir *dir_create(const size_t capacite_base) {
 
 void dir_free(dir *ht) {
     for (size_t i = 0; i < ht->capacite; i++) {
-        lcontact_free(ht->contacts[i]);
+        lcontact_free(&(ht->contacts[i]));
     }
     free(ht->contacts);
     free(ht);
@@ -260,8 +260,10 @@ int main(void) {
         char *valeur3 = dir_insert(ht1, value, value);
         if (valeur3 != NULL) {
             free(valeur3);
+            valeur3 = NULL;
         }
         free(value);
+        value = NULL;
     }
     // dir_print(ht1);
     printf("%d, %d, %d\n", (int)(ht1->capacite_base), (int)(ht1->capacite), (int)(ht1->taille));
