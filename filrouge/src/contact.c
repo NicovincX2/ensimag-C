@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <assert.h>
 
 #include "utils.h"
 #include "contact.h"
@@ -17,7 +16,9 @@
 contact *contact_create(const char *cle, const char *valeur) {
     // Le contact
     contact *c = malloc(sizeof *c);
-    assert(c != NULL);
+    if (c == NULL) {
+        return NULL;
+    }
 
     c->cle = strdup(cle);
     c->valeur = strdup(valeur);
@@ -30,7 +31,9 @@ contact *contact_create(const char *cle, const char *valeur) {
 dir_item *liste_contacts_create(contact *c) {
     // La liste chaînee de contacts
     dir_item *lc = malloc(sizeof *lc);
-    assert(lc != NULL);
+    if (lc == NULL) {
+        return NULL;
+    }
     lc->tete = c;
     lc->queue = c;
 

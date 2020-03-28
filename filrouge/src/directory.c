@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <assert.h>
 
 #include <directory.h>
 #include <contact.h>
@@ -21,7 +20,8 @@ char *dir_insert(dir *ht, const char *cle, const char *valeur); // pour la fonct
 */
 static dir *dir_create_dynamic(const size_t capacite_base) {
     dir *ht = malloc(sizeof *ht);
-    assert(ht != NULL);
+    if (ht == NULL)
+        return NULL;
     ht->capacite_base = capacite_base;
 
     ht->capacite = next_prime(ht->capacite_base);
@@ -219,6 +219,7 @@ void dir_print(dir *ht) {
     }
 }
 
+#ifdef UNIT_TEST
 int main(void) {
     dir *ht = dir_create(HT_CAPACITE_BASE_INITIALE);
     dir_print(ht);
@@ -271,3 +272,4 @@ int main(void) {
 
     return EXIT_SUCCESS;
 }
+#endif

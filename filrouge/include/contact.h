@@ -6,10 +6,10 @@
 */
 
 typedef struct contact {
-    char *cle;
-    char *valeur;
     struct contact *suivant;
     struct contact *precedent;
+    char *cle;
+    char *valeur;
 } contact;
 
 typedef struct dir_item {
