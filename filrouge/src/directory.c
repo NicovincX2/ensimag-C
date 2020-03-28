@@ -7,6 +7,7 @@
 #include <utils.h>
 
 #define HT_CAPACITE_BASE_INITIALE 50
+#define HT_CAPACITE_MAX 1000000
 
 
 char *dir_insert(dir *ht, const char *cle, const char *valeur); // pour la fonction resize_dir
@@ -20,15 +21,24 @@ char *dir_insert(dir *ht, const char *cle, const char *valeur); // pour la fonct
 */
 static dir *dir_create_dynamic(const size_t capacite_base) {
     dir *ht = malloc(sizeof *ht);
-    if (ht == NULL)
+    if (ht == NULL) {
         return NULL;
-    ht->capacite_base = capacite_base;
+    }
+    // check for capacite_base upper bound
+    if (capacite_base > HT_CAPACITE_MAX) {
+        ht->capacite_base = HT_CAPACITE_MAX;
+    } else {
+        ht->capacite_base = capacite_base;
+    }
 
     ht->capacite = next_prime(ht->capacite_base);
 
     ht->taille = 0;
     ht->contacts = calloc(ht->capacite, sizeof(dir_item *));
-
+    if (ht->contacts == NULL) {
+        free(ht); // dealing with memory leaks if calloc fails
+        return NULL;
+    }
     return ht;
 }
 
@@ -54,6 +64,8 @@ static void resize_dir(dir *ht, const size_t capacite_base) {
         return;
     }
     dir *new_ht = dir_create_dynamic(capacite_base);
+    if (new_ht == NULL)
+        return;
     for (size_t i = 0; i < ht->taille; i++) {
         dir_item *lc = ht->contacts[i];
         if (lc != NULL) {
@@ -103,6 +115,7 @@ static unsigned long get_hash(const char *str) {
   numéro passés en paramètre. Si il existait déjà un contact du même nom, son
   numéro est remplacé et la fonction retourne une copie de l'ancien numéro.
   Sinon, la fonction retourne NULL.
+  On détecte une erreur d'allocation en retournant -1
   Pour l'insertion on calcule l'index associé à la clef.
   Traitement des collisions par méthode de chaînage.
 */
@@ -120,10 +133,18 @@ char *dir_insert(dir *ht, const char *cle, const char *valeur) {
         // pas de contact à l'indice donné
         // Création du contact à insérer dans la table de hashage
         contact *c = contact_create(cle, valeur);
+        // malloc issue
+        if (c == NULL) {
+            return NULL;
+        }
         // fait dans liste_contacts_create(c)
         // lc->tete = c;
         // lc->queue = c;
         dir_item *lc = liste_contacts_create(c);
+        if (lc == NULL) {
+            contact_free(&c);
+            return NULL;
+        }
         ht->contacts[indice] = lc;
         ++(ht->taille);
         return NULL;
@@ -133,6 +154,9 @@ char *dir_insert(dir *ht, const char *cle, const char *valeur) {
         if (indice_recherche == -1) {
             // Création du contact à insérer dans la table de hashage
             contact *c = contact_create(cle, valeur);
+            if (c == NULL) {
+                return NULL;
+            }
             // clef non trouvee, on l'ajoute à la fin
             lcontact_add(ht->contacts[indice], c);
             // ++(ht->taille); // commenté car taille n'est pas le nombre de cellules
