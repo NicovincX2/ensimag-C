@@ -1,2 +1,0 @@
-utils.c:10:7:strdup	32	static
-utils.c:41:11:next_prime	8	static
