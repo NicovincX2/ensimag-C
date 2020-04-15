@@ -1,0 +1,8 @@
+directory.c:22:13:dir_create_dynamic	32	static
+directory.c:45:6:dir_create	8	static
+directory.c:53:6:dir_free	32	static
+directory.c:122:7:dir_insert	64	static
+directory.c:61:13:resize_dir.part.0	48	static
+directory.c:182:13:dir_lookup_num	32	static
+directory.c:205:6:dir_delete	48	static
+directory.c:229:6:dir_print	48	static

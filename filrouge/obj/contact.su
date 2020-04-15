@@ -1,0 +1,9 @@
+contact.c:16:10:contact_create	32	static
+contact.c:31:11:liste_contacts_create	16	static
+contact.c:46:6:contact_free	16	static
+contact.c:55:6:lcontact_free	48	static
+contact.c:68:6:contact_update	32	static
+contact.c:73:6:contact_delete	32	static
+contact.c:85:6:lcontact_add	8	static
+contact.c:100:5:trouver_contact	32	static
+contact.c:116:10:get_contact	8	static

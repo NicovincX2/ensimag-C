@@ -1,10 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include <directory.h>
-#include <contact.h>
-#include <hash.h>
-#include <utils.h>
+#include "directory.h"
+#include "contact.h"
+#include "utils.h"
+#include "hash.h"
 
 #define HT_CAPACITE_BASE_INITIALE 50
 #define HT_CAPACITE_MAX 1000000
@@ -275,13 +275,13 @@ int main(void) {
     dir *ht1 = dir_create(HT_CAPACITE_BASE_INITIALE);
     dir_print(ht1);
 
-    char buf[10];
-    char *value;
     const int32_t nombre_insertions = 10000;
 
     for (int32_t i = 0; i < nombre_insertions; i++) {
-        sprintf(buf, "%i", i);
-        value = strdup(buf);
+        int size = snprintf(NULL, 0, "%i", i);
+        char *buf = malloc(size + 1);
+        snprintf(buf, size, "%d", i);  // ça fonctionnerait avec sprintf
+        char *value = strdup(buf);
         char *valeur3 = dir_insert(ht1, value, value);
         if (valeur3 != NULL) {
             free(valeur3);

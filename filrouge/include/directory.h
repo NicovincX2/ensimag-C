@@ -3,7 +3,8 @@
 
 #include <stdint.h>
 #include <stdio.h>
-#include <contact.h>
+
+#include "contact.h"
 
 /*
   Structure de données représentant un annuaire.

@@ -56,10 +56,9 @@ void lcontact_free(dir_item **lc) {
     // lc est une liste chaînée
     if ((*lc) != NULL) {
         contact *courant = (*lc)->tete;
-        while (courant != NULL) {
-            contact *temp = courant;
-            courant = courant->suivant;
-            contact_free(&temp);
+        while ((courant = (*lc)->tete) != NULL) {
+            (*lc)->tete = (*lc)->tete->suivant;
+            contact_free(&courant);
         }
     }
     free(*lc);
